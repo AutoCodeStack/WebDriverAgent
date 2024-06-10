@@ -187,6 +187,13 @@ typedef NS_ENUM(NSUInteger, FBUIInterfaceAppearance) {
  @return YES if the simulated location has been successfully cleared
  */
 - (BOOL)fb_clearSimulatedLocation:(NSError **)error;
+
+
+// custom methods
+
+- (void)cmd_tap:(CGPoint)point;
+
+
 #endif
 
 @end

@@ -23,6 +23,8 @@
 #import "FBXCodeCompatibility.h"
 #import "FBXCTestDaemonsProxy.h"
 #import "XCUIDevice.h"
+#import "XCPointerEventPath.h"
+#import "XCTRunnerDaemonSession.h"
 
 static const NSTimeInterval FBHomeButtonCoolOffTime = 1.;
 static const NSTimeInterval FBScreenLockTimeout = 5.;
@@ -385,5 +387,28 @@ static bool fb_isLocked;
   return [FBXCTestDaemonsProxy clearSimulatedLocation:error];
 }
 #endif
+
+
+
+ - (void)cmd_tap:(CGPoint)point
+ {
+   XCPointerEventPath *path = [[XCPointerEventPath alloc] initForTouchAtPoint:point offset:0];
+   [path liftUpAtOffset:0.05];
+   [self runEventPath:path];
+ }
+
+- (void)runEventPath:(XCPointerEventPath*)path
+{
+  XCSynthesizedEventRecord *eventRecord = [[XCSynthesizedEventRecord alloc]
+                                     initWithName:nil
+                                     interfaceOrientation:0];
+  [eventRecord addPointerEventPath:path];
+  [[self eventSynthesizer] synthesizeEvent:eventRecord completion:(id)^(BOOL result, NSError *invokeError) {
+    NSLog(@"%d", result);
+    NSLog(@"%@", invokeError.localizedDescription);
+  }];
+}
+
+
 
 @end

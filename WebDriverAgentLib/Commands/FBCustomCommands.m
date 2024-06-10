@@ -31,6 +31,7 @@
 #import "XCUIElement+FBIsVisible.h"
 #import "XCUIElementQuery.h"
 #import "FBUnattachedAppLauncher.h"
+#import "XCPointerEventPath.h"
 
 @implementation FBCustomCommands
 
@@ -38,6 +39,7 @@
 {
   return
   @[
+    [[FBRoute POST:@"/wda/custom/tap"] respondWithTarget:self action:@selector(handleCustomTap:)],
     [[FBRoute POST:@"/timeouts"] respondWithTarget:self action:@selector(handleTimeouts:)],
     [[FBRoute POST:@"/wda/homescreen"].withoutSession respondWithTarget:self action:@selector(handleHomescreenCommand:)],
     [[FBRoute POST:@"/wda/deactivateApp"] respondWithTarget:self action:@selector(handleDeactivateAppCommand:)],
@@ -630,4 +632,15 @@
   return FBResponseWithObject(result);
 }
 
+
++ (id<FBResponsePayload>)handleCustomTap:(FBRouteRequest *)request
+{
+  NSNumber *x_coord = request.arguments[@"x"];
+  NSNumber *y_coord = request.arguments[@"y"];
+  CGPoint point = CGPointMake(x_coord.integerValue,y_coord.integerValue);
+  [[XCUIDevice sharedDevice] cmd_tap:point];
+  return FBResponseWithOK();
+}
+
 @end
+
