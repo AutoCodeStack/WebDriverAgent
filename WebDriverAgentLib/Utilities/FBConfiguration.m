@@ -33,10 +33,10 @@ static BOOL FBShouldUseTestManagerForVisibilityDetection = NO;
 static BOOL FBShouldUseSingletonTestManager = YES;
 static BOOL FBShouldRespectSystemAlerts = NO;
 
-static NSUInteger FBMjpegScalingFactor = 100;
+static NSUInteger FBMjpegScalingFactor = 25;
 static BOOL FBMjpegShouldFixOrientation = NO;
 static NSUInteger FBMjpegServerScreenshotQuality = 25;
-static NSUInteger FBMjpegServerFramerate = 10;
+static NSUInteger FBMjpegServerFramerate = 30;
 
 // Session-specific settings
 static BOOL FBShouldTerminateApp;

@@ -95,13 +95,8 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
     return;
   }
-
-  CGFloat scalingFactor = FBConfiguration.mjpegScalingFactor / 100.0;
-  [self.imageProcessor submitImageData:screenshotData
-                         scalingFactor:scalingFactor
-                     completionHandler:^(NSData * _Nonnull scaled) {
-    [self sendScreenshot:scaled];
-  }];
+  
+  [self sendScreenshot:screenshotData];
 
   [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
 }
