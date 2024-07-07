@@ -34,6 +34,10 @@
 		13DE7A5D287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A5A287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m */; };
 		13DE7A5E287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A5A287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m */; };
 		13FFF2F2287DBEE600E561E4 /* XCElementSnapshotDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FFF2F1287DBEE600E561E4 /* XCElementSnapshotDouble.m */; };
+		279317D52C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 279317D32C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h */; };
+		279317D62C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 279317D42C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m */; };
+		279317D72C3AEC750039BEE9 /* XCUIDevice+CmdHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 279317D32C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h */; };
+		279317D82C3AEC780039BEE9 /* XCUIDevice+CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 279317D42C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m */; };
 		315A15012518CB8700A3A064 /* TouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15002518CB8700A3A064 /* TouchableView.m */; };
 		315A15072518CC2800A3A064 /* TouchSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15062518CC2800A3A064 /* TouchSpotView.m */; };
 		315A150A2518D6F400A3A064 /* TouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15092518D6F400A3A064 /* TouchViewController.m */; };
@@ -922,6 +926,8 @@
 		13FFF2F0287DBEE600E561E4 /* XCElementSnapshotDouble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCElementSnapshotDouble.h; sourceTree = "<group>"; };
 		13FFF2F1287DBEE600E561E4 /* XCElementSnapshotDouble.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCElementSnapshotDouble.m; sourceTree = "<group>"; };
 		1BA7DD8C206D694B007C7C26 /* XCTElementSetTransformer-Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCTElementSetTransformer-Protocol.h"; sourceTree = "<group>"; };
+		279317D32C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XCUIDevice+CmdHandler.h"; path = "WebDriverAgentLib/Categories/XCUIDevice+CmdHandler.h"; sourceTree = SOURCE_ROOT; };
+		279317D42C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "XCUIDevice+CmdHandler.m"; path = "WebDriverAgentLib/Categories/XCUIDevice+CmdHandler.m"; sourceTree = SOURCE_ROOT; };
 		315A14FF2518CB8700A3A064 /* TouchableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchableView.h; sourceTree = "<group>"; };
 		315A15002518CB8700A3A064 /* TouchableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchableView.m; sourceTree = "<group>"; };
 		315A15052518CC2800A3A064 /* TouchSpotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchSpotView.h; sourceTree = "<group>"; };
@@ -1789,6 +1795,8 @@
 				71E75E6C254824230099FC87 /* XCUIElementQuery+FBHelpers.m */,
 				13DE7A59287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.h */,
 				13DE7A5A287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m */,
+				279317D32C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h */,
+				279317D42C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m */,
 			);
 			name = Categories;
 			path = WebDriverAgentLib/Categories;
@@ -2393,6 +2401,7 @@
 				641EE69F2240C5CA00173FCB /* FBTCPSocket.h in Headers */,
 				641EE6A02240C5CA00173FCB /* XCUIElement+FBUID.h in Headers */,
 				641EE6A12240C5CA00173FCB /* XCSymbolicationRecord.h in Headers */,
+				279317D72C3AEC750039BEE9 /* XCUIDevice+CmdHandler.h in Headers */,
 				641EE6A22240C5CA00173FCB /* XCUIDevice.h in Headers */,
 				7182272F258744B000661B83 /* RoutingHTTPServer.h in Headers */,
 				641EE6A32240C5CA00173FCB /* XCUIApplication+FBTouchAction.h in Headers */,
@@ -2501,6 +2510,7 @@
 				EEE376491D59FAE900ED88DD /* XCUIElement+FBWebDriverAttributes.h in Headers */,
 				715AFAC11FFA29180053896D /* FBScreen.h in Headers */,
 				EE6B64FD1D0F86EF00E85F5D /* XCTestPrivateSymbols.h in Headers */,
+				279317D52C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.h in Headers */,
 				AD76723D1D6B7CC000610457 /* XCUIElement+FBTyping.h in Headers */,
 				EEE376451D59F81400ED88DD /* XCUIElement+FBUtilities.h in Headers */,
 				EE158AB21CBD456F00A3E3F0 /* XCUIElement+FBScrolling.h in Headers */,
@@ -3140,6 +3150,7 @@
 				641EE5FE2240C5CA00173FCB /* XCUIElement+FBWebDriverAttributes.m in Sources */,
 				641EE5FF2240C5CA00173FCB /* XCUIElement+FBForceTouch.m in Sources */,
 				716C9E0327315EFF005AD475 /* XCUIApplication+FBUIInterruptions.m in Sources */,
+				279317D82C3AEC780039BEE9 /* XCUIDevice+CmdHandler.m in Sources */,
 				641EE6002240C5CA00173FCB /* FBTouchActionCommands.m in Sources */,
 				719DCF182601EAFB000E765F /* FBNotificationsHelper.m in Sources */,
 				714EAA102673FDFE005C5B47 /* FBCapabilities.m in Sources */,
@@ -3250,6 +3261,7 @@
 				71B49EC81ED1A58100D51AD6 /* XCUIElement+FBUID.m in Sources */,
 				EE158AE21CBD456F00A3E3F0 /* FBRouteRequest.m in Sources */,
 				EE158ADB1CBD456F00A3E3F0 /* FBResponseJSONPayload.m in Sources */,
+				279317D62C3AEB8E0039BEE9 /* XCUIDevice+CmdHandler.m in Sources */,
 				714EAA0F2673FDFE005C5B47 /* FBCapabilities.m in Sources */,
 				7155D704211DCEF400166C20 /* FBMjpegServer.m in Sources */,
 				EEDFE1221D9C06F800E6FFE5 /* XCUIDevice+FBHealthCheck.m in Sources */,

@@ -32,6 +32,9 @@
 #import "XCUIElementQuery.h"
 #import "FBUnattachedAppLauncher.h"
 #import "XCPointerEventPath.h"
+#import "XCUIElement+FBSwiping.h"
+#import "XCUIDevice+CmdHandler.h"
+
 
 @implementation FBCustomCommands
 
@@ -40,6 +43,7 @@
   return
   @[
     [[FBRoute POST:@"/wda/custom/tap"] respondWithTarget:self action:@selector(handleCustomTap:)],
+    [[FBRoute POST:@"/wda/custom/swipe"] respondWithTarget:self action:@selector(handleCustomSwipe:)],
     [[FBRoute POST:@"/timeouts"] respondWithTarget:self action:@selector(handleTimeouts:)],
     [[FBRoute POST:@"/wda/homescreen"].withoutSession respondWithTarget:self action:@selector(handleHomescreenCommand:)],
     [[FBRoute POST:@"/wda/deactivateApp"] respondWithTarget:self action:@selector(handleDeactivateAppCommand:)],
@@ -635,11 +639,35 @@
 
 + (id<FBResponsePayload>)handleCustomTap:(FBRouteRequest *)request
 {
-  NSNumber *x_coord = request.arguments[@"x"];
-  NSNumber *y_coord = request.arguments[@"y"];
-  CGPoint point = CGPointMake(x_coord.integerValue,y_coord.integerValue);
-  [[XCUIDevice sharedDevice] cmd_tap:point];
-  return FBResponseWithOK();
+  @try {
+    NSNumber *x_coord = request.arguments[@"x"];
+    NSNumber *y_coord = request.arguments[@"y"];
+    [[XCUIDevice sharedDevice] cmd_tap:x_coord.floatValue y:y_coord.floatValue];
+    return FBResponseWithOK();
+  } @catch (NSException *exception) {
+    NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:0 userInfo:exception.userInfo];
+    return FBResponseWithUnknownError(error);
+  }
+}
+
++ (id<FBResponsePayload>)handleCustomSwipe:(FBRouteRequest *)request
+{
+  @try {
+    NSNumber *x1_coord = request.arguments[@"x1"];
+    NSNumber *y1_coord = request.arguments[@"y1"];
+    NSNumber *x2_coord = request.arguments[@"x2"];
+    NSNumber *y2_coord = request.arguments[@"y2"];
+    NSNumber *const velocity = request.arguments[@"velocity"];
+    [[XCUIDevice sharedDevice] cmd_swipe:x1_coord.floatValue
+                                      y1:y1_coord.floatValue
+                                      x2:x2_coord.floatValue
+                                      y2:y2_coord.floatValue
+                                      delay:velocity.floatValue];
+    return FBResponseWithOK();
+  } @catch (NSException *exception) {
+    NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:0 userInfo:exception.userInfo];
+    return FBResponseWithUnknownError(error);
+  }
 }
 
 @end

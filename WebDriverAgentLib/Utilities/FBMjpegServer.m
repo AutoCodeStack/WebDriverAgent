@@ -20,7 +20,7 @@
 #import "FBImageUtils.h"
 #import "XCUIScreen.h"
 
-static const NSUInteger MAX_FPS = 60;
+static const NSUInteger MAX_FPS = 30;
 static const NSTimeInterval FRAME_TIMEOUT = 1.;
 
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
@@ -83,8 +83,10 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
   }
 
   NSError *error;
-  CGFloat compressionQuality = MAX(FBMinCompressionQuality,
-                                   MIN(FBMaxCompressionQuality, FBConfiguration.mjpegServerScreenshotQuality / 100.0));
+//  CGFloat compressionQuality = MAX(FBMinCompressionQuality,
+//                                   MIN(FBMaxCompressionQuality, FBConfiguration.mjpegServerScreenshotQuality / 100.0));
+  CGFloat compressionQuality = 0.25f;
+
   NSData *screenshotData = [FBScreenshot takeInOriginalResolutionWithScreenID:self.mainScreenID
                                                            compressionQuality:compressionQuality
                                                                           uti:UTTypeJPEG
@@ -95,7 +97,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
     return;
   }
-  
+
   [self sendScreenshot:screenshotData];
 
   [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
